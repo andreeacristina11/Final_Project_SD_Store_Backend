@@ -9,22 +9,16 @@ import javax.persistence.Enumerated;
 import javax.persistence.ManyToOne;
 
 public class ProductDto {
-    private Long id;
+
     private String name;
     private String description;
     private String thumbnail ;
-    private Category category;
+    private Long categoryId;
     private Double price;
     private ProductType productType;
     private User user;
 
-    public Long getId() {
-        return id;
-    }
 
-    public void setId(Long id) {
-        this.id = id;
-    }
 
     public String getName() {
         return name;
@@ -50,12 +44,12 @@ public class ProductDto {
         this.thumbnail = thumbnail;
     }
 
-    public Category getCategory() {
-        return category;
+    public Long getCategoryId() {
+        return categoryId;
     }
 
-    public void setCategory(Category category) {
-        this.category = category;
+    public void setCategoryId(Long categoryId) {
+        this.categoryId = categoryId;
     }
 
     public Double getPrice() {

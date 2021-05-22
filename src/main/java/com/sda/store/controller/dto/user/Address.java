@@ -2,17 +2,17 @@ package com.sda.store.controller.dto.user;
 
 public class AddressDto {
 
-    private String cuntry;
+    private String country;
     private String city;
     private String street;
     private Long zipcode;
 
-    public String getCuntry() {
-        return cuntry;
+    public String getCountry() {
+        return country;
     }
 
-    public void setCuntry(String cuntry) {
-        this.cuntry = cuntry;
+    public void setCountry(String country) {
+        this.country = country;
     }
 
     public String getCity() {
