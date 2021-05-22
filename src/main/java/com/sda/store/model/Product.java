@@ -11,13 +11,18 @@ public class Product {
     @Id
     @GeneratedValue
     private Long id;
+
+    @Column(nullable = false)
     private String name;
+
+    @Column(length = 255)
     private String description;
     private String thumbnail ;
 
     @ManyToOne
     private Category category; //TODO
 
+    @Column(nullable = false)
     private Double price;
 
     @Enumerated(value = EnumType.STRING)

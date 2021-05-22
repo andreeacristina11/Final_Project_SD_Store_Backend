@@ -28,4 +28,9 @@ public class UserServiceImplementantion implements UserService {
         user.setPassword(encoder.encode(user.getPassword()));
         return userRepository.save(user);
     }
+
+    @Override
+    public User findByEmail(String email) {
+        return userRepository.findByEmail(email);
+    }
 }

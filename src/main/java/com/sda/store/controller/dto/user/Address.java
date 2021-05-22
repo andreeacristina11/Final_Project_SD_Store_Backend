@@ -1,6 +1,6 @@
 package com.sda.store.controller.dto.user;
 
-public class AddressDto {
+public class Address {
 
     private String country;
     private String city;

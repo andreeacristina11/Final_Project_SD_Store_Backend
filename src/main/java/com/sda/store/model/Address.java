@@ -11,7 +11,7 @@ public class Address {
     @GeneratedValue
     private Long id;
 
-    private String cuntry;
+    private String country;
     private String city;
     private String street;
     private Long zipcode;
@@ -24,12 +24,12 @@ public class Address {
         this.id = id;
     }
 
-    public String getCuntry() {
-        return cuntry;
+    public String getCountry() {
+        return country;
     }
 
-    public void setCuntry(String cuntry) {
-        this.cuntry = cuntry;
+    public void setCountry(String cuntry) {
+        this.country = cuntry;
     }
 
     public String getCity() {

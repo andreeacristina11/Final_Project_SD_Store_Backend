@@ -37,6 +37,10 @@ public class User {
     @Enumerated(value = EnumType.STRING)
     private MessagingChannel messagingChannel;
 
+
+    @OneToOne(cascade = CascadeType.ALL)
+    private ShoppingCart shoppingCart = new ShoppingCart();
+
     public Long getId() {
         return id;
     }
@@ -107,5 +111,13 @@ public class User {
 
     public void setMessagingChannel(MessagingChannel messagingChannel) {
         this.messagingChannel = messagingChannel;
+    }
+
+    public ShoppingCart getShoppingCart() {
+        return shoppingCart;
+    }
+
+    public void setShoppingCart(ShoppingCart shoppingCart) {
+        this.shoppingCart = shoppingCart;
     }
 }

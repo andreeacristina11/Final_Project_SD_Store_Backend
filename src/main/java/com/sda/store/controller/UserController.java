@@ -1,8 +1,7 @@
 package com.sda.store.controller;
 
-import com.sda.store.controller.dto.user.AddressDto;
+import com.sda.store.controller.dto.user.Address;
 import com.sda.store.controller.dto.user.UserDto;
-import com.sda.store.model.Address;
 import com.sda.store.model.Role;
 import com.sda.store.model.User;
 import com.sda.store.service.RoleService;
@@ -13,7 +12,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import java.security.Principal;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -30,71 +28,70 @@ public class UserController {
     }
 
     @PostMapping(value = "/register")
-    public UserDto create(@RequestBody UserDto userDto){
+    public UserDto create(@RequestBody UserDto userDto) {
         User user = userService.create(mapUserDtoToUser(userDto));
-        return mapUserDtoToUser(user);
+        return mapUserToUserDto(user);
     }
 
     @GetMapping(value = "/users/roles")
-    public List<Role> getRoles(){
+    public List<Role> getRoles() {
         return roleService.findAll();
     }
 
     @PostMapping(value = "/users/login")
-    public org.springframework.security.core.userdetails.User login(){
-       return( org.springframework.security.core.userdetails.User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+    public org.springframework.security.core.userdetails.User login() {
+        return (org.springframework.security.core.userdetails.User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
     }
 
-    private UserDto mapUserDtoToUser(User user){
-        UserDto userDto  = new UserDto();
-        userDto.setEmail(userDto.getEmail());
-        userDto.setPassword(userDto.getPassword());
-        userDto.setImageUrl(userDto.getImageUrl());
-        userDto.setFirstName(userDto.getFirstName());
-        userDto.setLastName(userDto.getLastName());
-        userDto.setMessagingChannel(userDto.getMessagingChannel());
+    private UserDto mapUserToUserDto(User user) {
+        UserDto userDto = new UserDto();
+        userDto.setEmail(user.getEmail());
+        userDto.setPassword(user.getPassword());
+        userDto.setImageUrl(user.getImageUrl());
+        userDto.setFirstName(user.getFirstName());
+        userDto.setLastName(user.getLastName());
+        userDto.setMessagingChannel(user.getMessagingChannel());
 
         Set<Role> userRoles = user.getRole();
-        for (Role role: userRoles){
+        for (Role role: userRoles) {
             userDto.setRole(role.getName());
         }
-        userDto.setAddressDto(mapAddressToAddressDto(user.getAddress()));
+
+        userDto.setAddress(mapAddressToAddressDto(user.getAddress()));
         return userDto;
     }
 
-    private AddressDto mapAddressToAddressDto(Address address){
-        AddressDto addressDto = new AddressDto();
+    private Address mapAddressToAddressDto(com.sda.store.model.Address address){
+        Address addressDto = new Address();
         addressDto.setCity(address.getCity());
-        addressDto.setCuntry(address.getCuntry());
+        addressDto.setCountry(address.getCountry());
         addressDto.setZipcode(address.getZipcode());
         addressDto.setStreet(address.getStreet());
         return addressDto;
     }
 
-    private User mapUserDtoToUser(UserDto userDto){
-        User user  = new User();
+    private User mapUserDtoToUser(UserDto userDto) {
+        User user = new User();
         user.setEmail(userDto.getEmail());
         user.setPassword(userDto.getPassword());
         user.setImageUrl(userDto.getImageUrl());
         user.setFirstName(userDto.getFirstName());
         user.setLastName(userDto.getLastName());
         user.setMessagingChannel(userDto.getMessagingChannel());
-
         Role role = roleService.findByName(userDto.getRole());
         Set<Role> userRoles = new HashSet<>();
         userRoles.add(role);
         user.setRole(userRoles);
-
-        user.setAddress(mapRequestAddressDtoToAddress(userDto.getAddressDto()));
+        user.setAddress(mapAddressDtoToAddress(userDto.getAddress()));
         return user;
     }
 
-    private Address mapRequestAddressDtoToAddress(AddressDto requestAddressDto){
-        Address address = new Address();
-        address.setCity(address.getCity());
-        address.setCuntry(address.getCuntry());
-        address.setZipcode(address.getZipcode());
-        address.setZipcode(address.getZipcode());
+    private com.sda.store.model.Address mapAddressDtoToAddress(Address addressDto) {
+        com.sda.store.model.Address address = new com.sda.store.model.Address();
+        address.setCity(addressDto.getCity());
+        address.setCountry(addressDto.getCountry());
+        address.setZipcode(addressDto.getZipcode());
+        address.setStreet(addressDto.getStreet());
         return address;
     }
 }

@@ -1,19 +1,24 @@
 package com.sda.store.model;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.OneToMany;
+import javax.persistence.*;
 import java.util.List;
 
 @Entity
 public class Category {
-
-    private String name;
-
     @Id
     @GeneratedValue
     private Long id;
+
+    @Column(unique = true)
+    private String name;
+
+    @ManyToOne
+    @JoinColumn(name = "parent_id")
+    private Category parent;
+
+    @OneToMany(mappedBy = "parent", cascade= CascadeType.ALL)
+    private List<Category> subCategories;
+
 
     @OneToMany
     private List<Product> products;
@@ -38,8 +43,23 @@ public class Category {
         this.id = id;
     }
 
-    @Id
     public Long getId() {
         return id;
+    }
+
+    public Category getParent() {
+        return parent;
+    }
+
+    public void setParent(Category parent) {
+        this.parent = parent;
+    }
+
+    public List<Category> getSubCategories() {
+        return subCategories;
+    }
+
+    public void setSubCategories(List<Category> subCategories) {
+        this.subCategories = subCategories;
     }
 }

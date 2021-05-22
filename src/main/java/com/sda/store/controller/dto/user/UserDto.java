@@ -10,14 +10,14 @@ public class UserDto {
     private String lastName;
     private MessagingChannel messagingChannel;
     private String role;
-    private AddressDto addressDto;
+    private Address address;
 
-    public AddressDto getAddressDto() {
-        return addressDto;
+    public Address getAddress() {
+        return address;
     }
 
-    public void setAddressDto(AddressDto addressDto) {
-        this.addressDto = addressDto;
+    public void setAddress(Address address) {
+        this.address = address;
     }
 
 

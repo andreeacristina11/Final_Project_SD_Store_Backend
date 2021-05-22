@@ -1,4 +1,4 @@
-package com.sda.store.controller.dto.user;
+package com.sda.store.controller.dto.product;
 
 import com.sda.store.model.Category;
 import com.sda.store.model.ProductType;
@@ -8,7 +8,7 @@ import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.persistence.ManyToOne;
 
-public class ProductDto {
+public class ProductRequestDto {
 
     private String name;
     private String description;
