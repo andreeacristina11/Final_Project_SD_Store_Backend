@@ -5,7 +5,7 @@ import javax.validation.constraints.Email;
 import java.util.List;
 import java.util.Set;
 
-@Entity
+@Entity(name = "user_table")
 public class User {
 
     @Id

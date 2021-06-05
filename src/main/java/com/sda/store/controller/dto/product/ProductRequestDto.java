@@ -17,6 +17,7 @@ public class ProductRequestDto {
     private Double price;
     private ProductType productType;
     private User user;
+    private Long stock;
 
 
 
@@ -74,5 +75,13 @@ public class ProductRequestDto {
 
     public void setUser(User user) {
         this.user = user;
+    }
+
+    public Long getStock() {
+        return stock;
+    }
+
+    public void setStock(Long stock) {
+        this.stock = stock;
     }
 }

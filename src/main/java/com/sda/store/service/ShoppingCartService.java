@@ -7,4 +7,5 @@ public interface ShoppingCartService {
 
     ShoppingCart addProductToCart(Product product, ShoppingCart shoppingCart);
     ShoppingCart removeProductFromCart(Product product, ShoppingCart shoppingCart);
+    void clearShoppingCart(Long shoppingCartId);
 }

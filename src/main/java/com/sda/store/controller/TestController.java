@@ -11,4 +11,9 @@ public class TestController {
     public HttpStatus testAuth(){
         return HttpStatus.OK;
     }
+    
+    @GetMapping(path = "/hello-world")
+    public String helloWorldString(){
+        return "Hello world";
+    }
 }

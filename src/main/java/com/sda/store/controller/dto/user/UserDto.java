@@ -10,17 +10,15 @@ public class UserDto {
     private String lastName;
     private MessagingChannel messagingChannel;
     private String role;
-    private Address address;
+    private AddressDto addressDto;
 
-    public Address getAddress() {
-        return address;
+    public AddressDto getAddressDto() {
+        return addressDto;
     }
 
-    public void setAddress(Address address) {
-        this.address = address;
+    public void setAddressDto(AddressDto addressDto) {
+        this.addressDto = addressDto;
     }
-
-
 
     public String getEmail() {
         return email;

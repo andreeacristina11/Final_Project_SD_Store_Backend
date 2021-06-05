@@ -31,6 +31,9 @@ public class Product {
     @ManyToOne
     private User user; //TODO
 
+    @Column(nullable = false)
+    private Long stock = 0L;
+
     public Product() {
     }
 
@@ -107,5 +110,13 @@ public class Product {
 
     public void setUser(User user) {
         this.user = user;
+    }
+
+    public Long getStock() {
+        return stock;
+    }
+
+    public void setStock(Long stock) {
+        this.stock = stock;
     }
 }

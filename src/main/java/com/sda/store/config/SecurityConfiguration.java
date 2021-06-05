@@ -33,12 +33,16 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .cors().disable()
                 .authorizeRequests()
                 .antMatchers(HttpMethod.OPTIONS, "/**").permitAll()
+                .antMatchers("/hello-world").permitAll()
                 .antMatchers("/users/login").permitAll()
                 .antMatchers("/users/roles").permitAll()
                 .antMatchers("/register").permitAll()
-                .antMatchers("/categories").permitAll()
                 .antMatchers("/categories/**").permitAll()
                 .antMatchers("/products").permitAll()
+                .antMatchers("/product-types").permitAll()
+                .antMatchers("/shopping-cart").permitAll()
+
+
                 .anyRequest()
                 .authenticated()
                 .and()

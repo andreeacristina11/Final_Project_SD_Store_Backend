@@ -1,7 +1,8 @@
 package com.sda.store.controller;
 
-import com.sda.store.controller.dto.user.Address;
+import com.sda.store.controller.dto.user.AddressDto;
 import com.sda.store.controller.dto.user.UserDto;
+import com.sda.store.model.Address;
 import com.sda.store.model.Role;
 import com.sda.store.model.User;
 import com.sda.store.service.RoleService;
@@ -57,18 +58,11 @@ public class UserController {
             userDto.setRole(role.getName());
         }
 
-        userDto.setAddress(mapAddressToAddressDto(user.getAddress()));
+        userDto.setAddressDto(AddressDto.mapAddressToAddressDto(user.getAddress()));
         return userDto;
     }
 
-    private Address mapAddressToAddressDto(com.sda.store.model.Address address){
-        Address addressDto = new Address();
-        addressDto.setCity(address.getCity());
-        addressDto.setCountry(address.getCountry());
-        addressDto.setZipcode(address.getZipcode());
-        addressDto.setStreet(address.getStreet());
-        return addressDto;
-    }
+
 
     private User mapUserDtoToUser(UserDto userDto) {
         User user = new User();
@@ -82,11 +76,11 @@ public class UserController {
         Set<Role> userRoles = new HashSet<>();
         userRoles.add(role);
         user.setRole(userRoles);
-        user.setAddress(mapAddressDtoToAddress(userDto.getAddress()));
+        user.setAddress(mapAddressDtoToAddress(userDto.getAddressDto()));
         return user;
     }
 
-    private com.sda.store.model.Address mapAddressDtoToAddress(Address addressDto) {
+    private com.sda.store.model.Address mapAddressDtoToAddress(AddressDto addressDto) {
         com.sda.store.model.Address address = new com.sda.store.model.Address();
         address.setCity(addressDto.getCity());
         address.setCountry(addressDto.getCountry());

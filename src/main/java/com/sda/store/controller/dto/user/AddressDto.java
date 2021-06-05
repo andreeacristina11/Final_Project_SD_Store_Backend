@@ -1,6 +1,8 @@
 package com.sda.store.controller.dto.user;
 
-public class Address {
+import com.sda.store.model.Address;
+
+public class AddressDto {
 
     private String country;
     private String city;
@@ -38,4 +40,14 @@ public class Address {
     public void setZipcode(Long zipcode) {
         this.zipcode = zipcode;
     }
+
+    public static AddressDto mapAddressToAddressDto(Address address){
+        AddressDto addressDto = new AddressDto();
+        addressDto.setCity(address.getCity());
+        addressDto.setCountry(address.getCountry());
+        addressDto.setZipcode(address.getZipcode());
+        addressDto.setStreet(address.getStreet());
+        return addressDto;
+    }
+
 }
