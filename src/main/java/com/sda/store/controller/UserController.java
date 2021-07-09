@@ -41,7 +41,8 @@ public class UserController {
 
     @PostMapping(value = "/users/login")
     public org.springframework.security.core.userdetails.User login() {
-        return (org.springframework.security.core.userdetails.User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        return (org.springframework.security.core.userdetails.User)
+                SecurityContextHolder.getContext().getAuthentication().getPrincipal();
     }
 
     private UserDto mapUserToUserDto(User user) {
